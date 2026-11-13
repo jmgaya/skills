@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Symlink every skill in this repo into ~/.claude/skills.
+set -e
+cd "$(dirname "$0")"
+mkdir -p ~/.claude/skills
+for d in */; do
+  [ -f "$d/SKILL.md" ] && ln -sfn "$PWD/${d%/}" ~/.claude/skills/
+done
